@@ -423,6 +423,7 @@ _Protocol (XML) (XML root) {
 	alias T = Protocol;
 	T _this;
 
+	if (root.type != EntityType.elementEmpty)
 	foreach (c; root.children) {  // Description,Request,Event,Enum
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
@@ -457,14 +458,15 @@ _Interface (XML) (XML root) {
 	alias T = Interface;
 	T _this;
 
+	if (root.type != EntityType.elementEmpty)
 	foreach (c; root.children) {  // Description,Request,Event,Enum
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
 	 	switch (c.name) {
-	 		case "description" : _this.description  = _Description (c) ; break;
-	 		case "request" 	 : _this.requests 	~= _Request (c) ; break;
-	 		case "event" 	 	 : _this.events    	~= _Event (c) ; break;
-	 		case "enum" 	 	 : _this.enums    	~= _Enum (c) ; break;
+	 		case "description"  : _this.description  = _Description (c) ; break;
+	 		case "request"   	: _this.requests 	~= _Request (c) ; break;
+	 		case "event" 	 	: _this.events    	~= _Event (c) ; break;
+	 		case "enum" 	 	: _this.enums    	~= _Enum (c) ; break;
 	 		default			    : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
 
@@ -494,6 +496,7 @@ _Request (XML) (XML root) {
 	alias T = Request;
 	T _this;
 
+	if (root.type != EntityType.elementEmpty)
 	foreach (c; root.children) {  // Arg
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
@@ -522,6 +525,7 @@ _Event (XML) (XML root) {
 	alias T = Event;
 	T _this;
 
+	if (root.type != EntityType.elementEmpty)
 	foreach (c; root.children) {  // Arg
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
@@ -552,6 +556,7 @@ _Arg (XML) (XML root) {
 	T _this;
 
 	// name,version
+	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"    : _this.summary  	 = a.value; break;
@@ -574,6 +579,7 @@ _Description (XML) (XML root) {
 	T _this;
 
 	// name,version
+	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"   : _this.summary 	= a.value; break;
@@ -589,6 +595,7 @@ _Enum (XML) (XML root) {
 	alias T = Enum;
 	T _this;
 
+	if (root.type != EntityType.elementEmpty)
 	foreach (c; root.children) {  // Arg
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
@@ -618,6 +625,7 @@ _Entry (XML) (XML root) {
 	T _this;
 
 	// name,version
+	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"   : _this.summary 	= a.value; break;
