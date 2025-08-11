@@ -432,22 +432,22 @@ _Protocol (XML) (XML root) {
 	 		case "copyright" : _this.copyright   = c.children[0].text; break;
 	 		default			  : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
+	}
 
-		// name,version
-		foreach (a; root.attributes) {
-			//static foreach (m;__traits (allMembers,T)) {
-			//	static if ( is (typeof(__traits (getMember,T,m) ) == string) ) {
-			//		// string -> attr
-			//		if (__traits (getMember,_this,m) == a.name) {
-			//			__traits (getMember,_this,m) = a.value;
-			//		}
-			//	}
-			//}
-			switch (a.name) {
-		 		case "name"    : _this.name = a.value; break;
-		 		default			: writefln ("UNSUPPORTED attr: %s", a.name);
-		 	}
-		}
+	// name,version
+	foreach (a; root.attributes) {
+		//static foreach (m;__traits (allMembers,T)) {
+		//	static if ( is (typeof(__traits (getMember,T,m) ) == string) ) {
+		//		// string -> attr
+		//		if (__traits (getMember,_this,m) == a.name) {
+		//			__traits (getMember,_this,m) = a.value;
+		//		}
+		//	}
+		//}
+		switch (a.name) {
+	 		case "name"    : _this.name = a.value; break;
+	 		default			: writefln ("UNSUPPORTED attr: %s", a.name);
+	 	}
 	}
 
 	return _this;
@@ -469,23 +469,23 @@ _Interface (XML) (XML root) {
 	 		case "enum" 	 	: _this.enums    	~= _Enum (c) ; break;
 	 		default			    : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
+	}
 
-		// name,version
-		foreach (a; root.attributes) {
-			//static foreach (m;__traits (allMembers,T)) {
-			//	static if ( is (typeof(__traits (getMember,T,m) ) == string) ) {
-			//		// string -> attr
-			//		if (__traits (getMember,_this,m) == a.name) {
-			//			__traits (getMember,_this,m) = a.value;
-			//		}
-			//	}
-			//}
-			switch (a.name) {
-		 		case "name"    : _this.name 		= a.value; break;
-		 		case "version" : _this.version_ 	= a.value; break;
-		 		default			: writefln ("UNSUPPORTED attr: %s", a.name);
-		 	}
-		}
+	// name,version
+	foreach (a; root.attributes) {
+		//static foreach (m;__traits (allMembers,T)) {
+		//	static if ( is (typeof(__traits (getMember,T,m) ) == string) ) {
+		//		// string -> attr
+		//		if (__traits (getMember,_this,m) == a.name) {
+		//			__traits (getMember,_this,m) = a.value;
+		//		}
+		//	}
+		//}
+		switch (a.name) {
+	 		case "name"    : _this.name 		= a.value; break;
+	 		case "version" : _this.version_ 	= a.value; break;
+	 		default		   : writefln ("UNSUPPORTED attr: %s", a.name);
+	 	}
 	}
 
 	return _this;
@@ -502,19 +502,19 @@ _Request (XML) (XML root) {
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
 	 	switch (c.name) {
 	 		case "description" : _this.description  = _Description (c) ; break;
-	 		case "arg" 			 : _this.args 		   ~= _Arg (c); break;
-	 		default	  			 : writefln ("UNSUPPORTED: %s", c.name);
+	 		case "arg" 		   : _this.args 	   ~= _Arg (c); break;
+	 		default	  		   : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
+	}
 
-		// name,version
-		foreach (a; root.attributes) {
-			switch (a.name) {
-		 		case "name"    : _this.name 		= a.value; break;
-		 		case "since"   : _this.since   	= a.value; break;
-		 		case "type"    : _this.type   	= a.value; break;
-		 		default			: writefln ("UNSUPPORTED attr: %s", a.name);
-		 	}
-		}
+	// name,version
+	foreach (a; root.attributes) {
+		switch (a.name) {
+	 		case "name"    : _this.name 	= a.value; break;
+	 		case "since"   : _this.since   	= a.value; break;
+	 		case "type"    : _this.type   	= a.value; break;
+	 		default		   : writefln ("UNSUPPORTED attr: %s", a.name);
+	 	}
 	}
 
 	return _this;
@@ -531,20 +531,20 @@ _Event (XML) (XML root) {
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
 	 	switch (c.name) {
 	 		case "description" : _this.description  = _Description (c) ; break;
-	 		case "arg" 			 : _this.args 		   ~= _Arg (c); break;
-	 		default	  			 : writefln ("UNSUPPORTED: %s", c.name);
+	 		case "arg" 		   : _this.args 	   ~= _Arg (c); break;
+	 		default	  		   : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
+	}
 
-		// name,version
-		foreach (a; root.attributes) {
-			switch (a.name) {
-		 		case "name"             : _this.name 				 = a.value; break;
-		 		case "since"            : _this.since   			 = a.value; break;
-		 		case "deprecated-since" : _this.deprecated_since = a.value; break;
-		 		case "type"             : _this.type   			 = a.value; break;
-		 		default			         : writefln ("UNSUPPORTED attr: %s", a.name);
-		 	}
-		}
+	// name,version
+	foreach (a; root.attributes) {
+		switch (a.name) {
+	 		case "name"             : _this.name			 = a.value; break;
+	 		case "since"            : _this.since   		 = a.value; break;
+	 		case "deprecated-since" : _this.deprecated_since = a.value; break;
+	 		case "type"             : _this.type   			 = a.value; break;
+	 		default		            : writefln ("UNSUPPORTED attr: %s", a.name);
+	 	}
 	}
 
 	return _this;
@@ -599,19 +599,19 @@ _Enum (XML) (XML root) {
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
 	 	switch (c.name) {
 	 		case "description" : _this.description  = _Description (c) ; break;
-	 		case "entry" 		 : _this.entries     ~= _Entry (c); break;
+	 		case "entry" 		 : _this.entries   ~= _Entry (c); break;
 	 		default	  			 : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
+	}
 
-		// name,version
-		foreach (a; root.attributes) {
-			switch (a.name) {
-		 		case "name"     : _this.name 		= a.value; break;
-		 		case "bitfield" : _this.bitfield = a.value; break;
-		 		case "since"    : _this.since 	= a.value; break;
-		 		default			 : writefln ("UNSUPPORTED attr: %s", a.name);
-		 	}
-		}
+	// name,version
+	foreach (a; root.attributes) {
+		switch (a.name) {
+	 		case "name"     : _this.name 	 = a.value; break;
+	 		case "bitfield" : _this.bitfield = a.value; break;
+	 		case "since"    : _this.since 	 = a.value; break;
+	 		default			 : writefln ("UNSUPPORTED attr: %s", a.name);
+	 	}
 	}
 
 	return _this;

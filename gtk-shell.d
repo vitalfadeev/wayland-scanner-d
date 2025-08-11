@@ -1,9 +1,3 @@
-    Starting Performing "debug" build using /usr/bin/dmd for x86_64.
-  Up-to-date dxml 0.4.4: target for configuration [library] is up to date.
-    Building wayland-scanner-d ~master: building configuration [application]
-     Linking wayland-scanner-d
-    Finished To force a rebuild of up-to-date targets, run again with --force
-     Running wayland-scanner-d gtk-shell.xml
 // protocol gtk
 module wayland_struct.protocol.gtk;
 
@@ -109,11 +103,11 @@ gtk_surface1 {
   // Requests
   pragma (inline,true):
   auto set_dbus_properties (const(char)* application_id, const(char)* app_menu_path, const(char)* menubar_path, const(char)* window_object_path, const(char)* application_object_path, const(char)* unique_bus_name) {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.set_dbus_properties, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ , application_id,app_menu_path,menubar_path,window_object_path,application_object_path,unique_bus_name); }
-  auto  () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode., /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ ); }
-  auto  () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode., /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ ); }
+  auto set_modal () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.set_modal, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ ); }
+  auto unset_modal () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.unset_modal, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ ); }
   auto present (uint time) {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.present, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ , time); }
   auto request_focus (const(char)* startup_id) {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.request_focus, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ , startup_id); }
-  auto  () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode., /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ ); }
+  auto release () {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.release, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ WL_MARSHAL_FLAG_DESTROY /* request args: */ ); }
   auto titlebar_gesture (uint serial, wl_seat* seat, uint gesture) {  wl_proxy_marshal_flags (cast (wl_proxy*) &this, opcode.titlebar_gesture, /* ret interface: */ null, /* version: */ wl_proxy_get_version (cast (wl_proxy *) &this), /* flags: */ 0 /* request args: */ , serial,seat,gesture); }
 
   // Events
@@ -174,11 +168,11 @@ gtk_surface1 {
   enum
   opcode : uint {
     set_dbus_properties = 0,
-     = 1,
-     = 2,
+    set_modal = 1,
+    unset_modal = 2,
     present = 3,
     request_focus = 4,
-     = 5,
+    release = 5,
     titlebar_gesture = 6,
   }
 
@@ -186,19 +180,19 @@ gtk_surface1 {
 }
 
 static const wl_interface*[6] gtk_surface1_set_dbus_properties_requiest_interfaces = [null,null,null,null,null,null];
-static const wl_interface*[0] gtk_surface1__requiest_interfaces = [];
-static const wl_interface*[0] gtk_surface1__requiest_interfaces = [];
+static const wl_interface*[0] gtk_surface1_set_modal_requiest_interfaces = [];
+static const wl_interface*[0] gtk_surface1_unset_modal_requiest_interfaces = [];
 static const wl_interface*[1] gtk_surface1_present_requiest_interfaces = [null];
 static const wl_interface*[1] gtk_surface1_request_focus_requiest_interfaces = [null];
-static const wl_interface*[0] gtk_surface1__requiest_interfaces = [];
+static const wl_interface*[0] gtk_surface1_release_requiest_interfaces = [];
 static const wl_interface*[3] gtk_surface1_titlebar_gesture_requiest_interfaces = [null,&wl_seat_interface,null];
 static const wl_message[7] gtk_surface1_requests = [
   wl_message ("set_dbus_properties", "?s?s?s?s?s?s", gtk_surface1_set_dbus_properties_requiest_interfaces.ptr),
-  wl_message ("", "", gtk_surface1__requiest_interfaces.ptr),
-  wl_message ("", "", gtk_surface1__requiest_interfaces.ptr),
+  wl_message ("set_modal", "", gtk_surface1_set_modal_requiest_interfaces.ptr),
+  wl_message ("unset_modal", "", gtk_surface1_unset_modal_requiest_interfaces.ptr),
   wl_message ("present", "u", gtk_surface1_present_requiest_interfaces.ptr),
   wl_message ("request_focus", "3?s", gtk_surface1_request_focus_requiest_interfaces.ptr),
-  wl_message ("", "", gtk_surface1__requiest_interfaces.ptr),
+  wl_message ("release", "4", gtk_surface1_release_requiest_interfaces.ptr),
   wl_message ("titlebar_gesture", "5uou", gtk_surface1_titlebar_gesture_requiest_interfaces.ptr),
 ];
 static const wl_interface*[1] gtk_surface1_configure_event_interfaces = [null];
