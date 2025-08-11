@@ -10,7 +10,7 @@ import std : replicate;
 
 void 
 main (string[] args) {
-	string file_name            = "wayland.xml";
+	string file_name            = "/usr/share/wayland/wayland.xml";
 	bool   generate_iface       = true;
 	bool   import_base_protocol = false;
 	if (args.length > 1) {
@@ -429,9 +429,10 @@ _Protocol (XML) (XML root) {
 	 	if (c.type == EntityType.comment) {} else
  		if (c.type == EntityType.elementStart || c.type == EntityType.elementEmpty)
 	 	switch (c.name) {
-	 		case "interface" : _this.interfaces ~= _Interface (c); break;
-	 		case "copyright" : _this.copyright   = c.children[0].text; break;
-	 		default			  : writefln ("UNSUPPORTED: %s", c.name);
+	 		case "interface"   : _this.interfaces ~= _Interface (c); break;
+	 		case "copyright"   : _this.copyright   = c.children[0].text; break;
+	 		case "description" : _this.description = _Description (c) ; break;
+	 		default			   : writefln ("UNSUPPORTED: %s", c.name);
 	 	}
 	}
 
@@ -642,6 +643,7 @@ struct
 Protocol {
     string 		name;
     string      copyright;
+    Description description;
     Interface[] interfaces;
 }
 
