@@ -556,7 +556,6 @@ _Arg (XML) (XML root) {
 	T _this;
 
 	// name,version
-	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"    : _this.summary  	 = a.value; break;
@@ -579,7 +578,6 @@ _Description (XML) (XML root) {
 	T _this;
 
 	// name,version
-	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"   : _this.summary 	= a.value; break;
@@ -625,7 +623,6 @@ _Entry (XML) (XML root) {
 	T _this;
 
 	// name,version
-	if (root.type != EntityType.elementEmpty)
 	foreach (a; root.attributes) {
 		switch (a.name) {
 	 		case "summary"   : _this.summary 	= a.value; break;
