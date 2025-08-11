@@ -49,6 +49,7 @@ D_File_Writer {
 	write () {
 		// Protocol
 		auto protocol_name = protocol.name;
+		writefln ("// Generated with %s", "wayland-scanner-d");
 		writefln ("// protocol %s", protocol_name);
 		writefln ("module wayland_struct.protocol.%s;", protocol_name);
 		writefln ("");
