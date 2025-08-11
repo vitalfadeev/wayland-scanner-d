@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/wl
+wayland-scanner-d.so
+wayland-scanner-d.dylib
+wayland-scanner-d.dll
+wayland-scanner-d.a
+wayland-scanner-d.lib
+wayland-scanner-d-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
+mixins.d
