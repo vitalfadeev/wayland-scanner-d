@@ -11,3 +11,5 @@ do
   ./wayland-scanner-d $NAME > $DEST/`basename $NAME | cut -f 1 -d '.' | tr - _`.d
 done
 
+./wayland-scanner-d gtk-shell.xml > $DEST/gtk.d
+
