@@ -107,7 +107,7 @@ D_File_Writer {
 						writeln ("  	return cast (void*) ");
 						writeln ("  		wl_proxy_marshal_flags (");
 						writeln ("  			cast (wl_proxy*) &this,");
-						writeln ("  	        opcode.bind, ");
+						writeln ("  	        Opcode.bind, ");
 						writeln ("  	        interface_, ");
 						writeln ("  	        version_, ");
 						writeln ("  	        0, ");
@@ -159,7 +159,7 @@ D_File_Writer {
 						_flags = "WL_MARSHAL_FLAG_DESTROY";
 					
 					writefln (
-						"  auto %s (%s) { %s %s (cast (wl_proxy*) &this, opcode.%s, /* ret interface: */ %s, /* version: */ %s, /* flags: */ %s /* request args: */ %s%s); }", 
+						"  auto %s (%s) { %s %s (cast (wl_proxy*) &this, Opcode.%s, /* ret interface: */ %s, /* version: */ %s, /* flags: */ %s /* request args: */ %s%s); }", 
 						req.name, req_args.join (", "), _ret, _fn, _opcode, _iface, _ver, _flags, (proxy_args.length? ", ": ""), proxy_args.join (","));
 				}
 			}
@@ -237,7 +237,7 @@ D_File_Writer {
 				writefln ("  // Enums");
 				foreach (enu; iface.enums) {
 					writefln ("  enum");
-					writefln ("  %s_ {", enu.name.to_d_name);
+					writefln ("  %s {", enu.name.to_d_name.capitalize);
 					foreach (ent; enu.entries) {
 						writefln ("    %s = %s,", ent.name.to_d_name, ent.value);
 					}
@@ -250,7 +250,7 @@ D_File_Writer {
 				writefln ("");
 				writefln ("  // Opcodes");
 				writefln ("  enum");
-				writefln ("  opcode : uint {");
+				writefln ("  Opcode : uint {");
 				foreach (i,req; iface.requests) {
 					writefln ("    %s = %d,", req.name, i);
 				}
