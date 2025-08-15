@@ -185,7 +185,7 @@ D_File_Writer {
 					string _filler = " ".replicate (max_eve_length - eve_name.length);
 					writefln (
 						"    %s_cb%s %s%s = &_%s_impl_default;", 
-						eve_name, _filler,eve_name, _filler, eve_name);
+						eve_name.capitalize, _filler,eve_name, _filler, eve_name);
 				}
 				writefln ("");
 				// alias
@@ -200,7 +200,7 @@ D_File_Writer {
 					}
 					writefln (
 						"    alias %s_cb%s = extern (C) void function (void* ctx, %s* _this /* args: */ %s%s);", 
-						eve_name, _filler, iface_name, (eve_args.length? ", ": ""), eve_args.join (", "));
+						eve_name.capitalize, _filler, iface_name, (eve_args.length? ", ": ""), eve_args.join (", "));
 				}
 				// impl default
 				foreach (eve; iface.events) {
